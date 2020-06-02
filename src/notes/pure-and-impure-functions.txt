@@ -1,0 +1,15 @@
+1)  /*
+        function sum(a, b) {
+        return a + b;
+        }
+    */
+
+    Tais funções são chamadas “puras” porque elas não tentam alterar suas entradas e sempre retornam o mesmo resultado para as mesmas entradas.
+
+2)  Em contraste, essa função é impura porque altera sua própria entrada:
+
+    /*
+        function withdraw(account, amount) {
+           account.total -= amount;
+        }
+    */
