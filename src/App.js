@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Header from './components/Header'
 import Clock from './components/Clock'
+import Toggle from './components/Toggle'
 
 function App() {
   function pureFunction(value01, value02){
@@ -17,6 +18,7 @@ function App() {
       <div className="body">
         <Header title="Welcome to this page" />
         <Clock />
+        <Toggle />
       </div>
     </div>
   );
