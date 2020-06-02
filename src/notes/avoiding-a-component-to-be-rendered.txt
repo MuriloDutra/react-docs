@@ -1,0 +1,21 @@
+1)  Em casos raros você pode desejar que um componente se esconda ainda que ele tenha sido renderizado por outro componente.
+    Para fazer isso, retorne null ao invés do resultado renderizado.
+    No exemplo abaixo, o <WarningBanner /> é renderizado dependendo do valor da prop chamada warn.
+    Se o valor da prop é false, o componente não é renderizado:
+
+    /*
+        function WarningBanner(props) {
+            if (!props.warn) {
+                return null;
+            }
+
+            return (
+                <div className="warning">
+                   Warning!
+                </div>
+            );
+        }
+    */
+
+    Retornar null do método render de um componente não afeta a ativação dos métodos do ciclo de vida do componente.
+    Por exemplo, o método componentDidUpdate ainda será chamado.
