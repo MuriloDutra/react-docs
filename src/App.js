@@ -7,14 +7,6 @@ import Greetings from './components/Greetings'
 import Table from './components/Table'
 
 function App() {
-  function pureFunction(value01, value02){
-    return value01 + value02;
-  }
-
-  function impureFunction(account, amount){
-    account.total -= amount;
-  }
-
   return (
     <div className="App">
       <div className="body">

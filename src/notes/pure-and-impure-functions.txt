@@ -1,6 +1,6 @@
 1)  /*
         function sum(a, b) {
-        return a + b;
+            return a + b;
         }
     */
 
@@ -10,6 +10,6 @@
 
     /*
         function withdraw(account, amount) {
-           account.total -= amount;
+            account.total -= amount;
         }
     */
