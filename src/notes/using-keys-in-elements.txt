@@ -1,0 +1,31 @@
+1)  As chaves ajudam o React a identificar quais itens sofreram alterações, foram adicionados ou removidos.
+    As chaves devem ser atribuídas aos elementos dentro do array para dar uma identidade estável aos elementos.
+    A melhor forma de escolher uma chave é usar uma string que identifica unicamente um item da lista dentre os demais.
+    Na maioria das vezes você usaria IDs de seus dados como chave:
+
+    /*
+        const todoItems = todos.map((todo) =>
+            <li key={todo.id}>
+                {todo.text}
+            </li>
+        );
+    */
+
+
+2)  Quando você não possui nenhum ID estável para os itens renderizados, você pode usar o índice do item como chave em último recurso,
+    apenas faça isso caso os itens não possuam IDs estáveis:
+
+    /*
+        const todoItems = todos.map((todo, index) =>
+            <li key={index}>
+                {todo.text}
+            </li>
+        );
+    */
+
+    Não recomendamos o uso de índices para chave se a ordem dos itens pode ser alterada. Isso pode impactar de forma negativa o desempenho e
+    poderá causar problemas com o estado do componente. Se você não atribuir uma chave de forma explícita para os itens de uma lista,
+    então o React irá utilizar os índices como chave por padrão.
+
+
+3)  Por via de regra, os elementos dentro de uma função map() devem especificar chaves.
