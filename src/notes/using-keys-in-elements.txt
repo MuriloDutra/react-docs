@@ -29,3 +29,7 @@
 
 
 3)  Por via de regra, os elementos dentro de uma função map() devem especificar chaves.
+
+
+4)  Chaves usadas nos arrays devem ser únicas entre seus elementos irmãos. Contudo elas não precisam ser únicas globalmente.
+    Podemos usar as mesmas chaves ao criar dois arrays diferentes.

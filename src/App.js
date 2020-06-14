@@ -2,9 +2,10 @@ import React from 'react';
 import './App.css';
 import Header from './components/Header'
 import Clock from './components/Clock'
-import Toggle from './components/Toggle'
-import Greetings from './components/Greetings'
-import Table from './components/Table'
+import Form from './components/Form'
+import TextArea from './components/TextArea';
+import Select from './components/Select';
+
 
 function App() {
   return (
@@ -12,9 +13,9 @@ function App() {
       <div className="body">
         <Header title="Welcome to this page" />
         <Clock />
-        <Toggle />
-        <Greetings isLoggedIn={true}/>
-        <Table numbers={[1, 2, 3, 4, 5]}/>
+        <Form />
+        <TextArea />
+        <Select />
       </div>
     </div>
   );
