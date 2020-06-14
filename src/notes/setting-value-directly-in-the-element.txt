@@ -1,0 +1,32 @@
+1)  
+    /*
+        <input type="text"  value={this.state.value} onChange={this.handleChange} />
+    */
+
+
+2)  
+    /*
+        <textarea placeholder="Write here..." value={this.state.textValue} onChange={this.handleChange}/>
+    */
+
+
+3)  
+    /*
+        <select value={this.state.valueOption} onChange={this.handleChange}>
+            <option value="orange">Orange</option>
+            <option value="limon">Limon</option>
+            <option value="coco">Coco</option>
+            <option value="mango">Mango</option>
+        </select>
+    */
+
+
+4)
+    /*
+        <select multiple={true} value={this.state.arrayOptions} onChange={this.handleChange}>
+            <option value="orange">Orange</option>
+            <option value="limon">Limon</option>
+            <option value="coco">Coco</option>
+            <option value="mango">Mango</option>
+        </select>
+    */
