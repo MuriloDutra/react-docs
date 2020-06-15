@@ -27,6 +27,7 @@ class Form extends React.Component{
                 <label>
                     Name:
                     <input type="text"  value={this.state.value} onChange={this.handleChange} />
+                    <input type="file"/>
                 </label>
                 <input type="submit" value="Enviar" />
             </form>
