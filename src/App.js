@@ -3,6 +3,7 @@ import './App.css';
 import Header from './components/Header'
 import Clock from './components/Clock'
 import Reservation from './components/Reservation';
+import Calculator from './components/Calculator';
 
 
 function App() {
@@ -12,9 +13,10 @@ function App() {
         <Header title="Welcome to this page" />
         <Clock />
         <Reservation />
+        <Calculator />
       </div>
     </div>
   );
 }
-//CHECKPOINT: https://pt-br.reactjs.org/docs/lists-and-keys.html#keys-must-only-be-unique-among-siblings 
+//CHECKPOINT: https://pt-br.reactjs.org/docs/composition-vs-inheritance.html 
 export default App;
