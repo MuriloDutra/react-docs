@@ -1,0 +1,7 @@
+01) The onblur event occurs when an object loses focus.
+    The onblur event is most often used with form validation code (e.g. when the user leaves a form field).
+    
+    Tip: The onblur event is the opposite of the onfocus event.
+    Tip: The onblur event is similar to the onfocusout event. The main difference is that the onblur event does not bubble.
+        Therefore, if you want to find out whether an element or its child loses focus, you could use the onfocusout event.
+        However, you can achieve this by using the optional useCapture parameter of the addEventListener() method for the onblur event.

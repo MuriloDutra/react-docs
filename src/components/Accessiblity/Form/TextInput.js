@@ -10,6 +10,8 @@ class TextInput extends React.Component{
                 placeholder="This is a text input"
                 onKeyUp={() => this.props.onKeyUp(this.props.inputRef)}
                 ref={this.props.inputRef}
+                aria-label="Input label"
+                aria-required="true"
             />
         )
     }

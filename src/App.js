@@ -1,9 +1,7 @@
 import React from 'react'
-import './App.css'
 import Clock from './components/Clock'
 import Title from './components/Title'
-import Glossario from './components/Accessiblity/Glossario'
-import Form from './components/Accessiblity/Form/Forms'
+import OutClickExample from './components/Accessiblity/OutClickExample'
 
 
 function App() {
@@ -14,11 +12,10 @@ function App() {
           <h1>Welcome to this page!</h1>
         </Title>
         <Clock />
-        <Glossario />
-        <Form />
+        <OutClickExample />
       </div>
     </div>
   );
 }
-//CHECKPOINT: https://pt-br.reactjs.org/docs/accessibility.html#mouse-and-pointer-events 
+//CHECKPOINT: https://pt-br.reactjs.org/docs/code-splitting.html
 export default App;
