@@ -43,7 +43,7 @@ class OutClickExample extends React.Component{
                 )}
                 <button>Button 02</button>
                 <button>Button 03</button>
-        </div>
+            </div>
         )
     }
 }

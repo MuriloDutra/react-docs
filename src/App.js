@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import Clock from './components/Clock'
 import Title from './components/Title'
-import OutClickExample from './components/Accessiblity/OutClickExample'
 
+const OutClickExample = React.lazy(() => import('./components/Accessiblity/OutClickExample'))
 
 function App() {
   return (
@@ -12,10 +12,13 @@ function App() {
           <h1>Welcome to this page!</h1>
         </Title>
         <Clock />
-        <OutClickExample />
+
+        <Suspense fallback={<h1>LOADING INFORMATIONS</h1>}>
+          <OutClickExample />
+        </Suspense>
       </div>
     </div>
   );
 }
-//CHECKPOINT: https://pt-br.reactjs.org/docs/code-splitting.html
+//CHECKPOINT: https://pt-br.reactjs.org/docs/context.html
 export default App;

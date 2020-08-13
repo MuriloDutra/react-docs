@@ -1,0 +1,25 @@
+1)  React.lazy() a função dele é permitir a você renderizar uma importação dinâmica como se fosse um componente comum.
+    
+    EXEMPLO:
+        const OtherComponent = React.lazy(() => import('./OtherComponent'));
+
+    Isto automaticamente carregará o pacote contendo o OtherComponent quando este componente é renderizado pela primeira vez.
+    React.lazy recebe uma função que deve retornar um import(). Este último retorna uma Promise que é resolvida para um módulo com um export default
+    que contém um componente React.
+
+
+2)  Componente <Suspense>, sua função é renderizar um loading ou algo do tipo enquanto você espera a renderização de outro componente.
+    EXEMPLO:
+        <Suspense fallback={<div>Loading...</div>}>
+          <OtherComponent />
+        </Suspense>
+
+    Repare na prop 'fallback' em <Suspense>, enquantoo o componente <OtherComponent /> não carrega, o código passado para a prop 'fallback' será renderizado.
+
+3)  Nova maneira de exportar componenetes
+    EXEMPLO:
+        // ManyComponents.js
+        export const MyComponent = /* ... */;
+
+        // MyComponent.js
+        export { MyComponent as default } from "./ManyComponents.js";
