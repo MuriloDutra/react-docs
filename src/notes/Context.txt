@@ -1,0 +1,73 @@
+1)  Contexto (context) é indicado para compartilhar dados que podem ser considerados “globais” para a árvore de componentes do React.
+    Usuário autenticado ou o idioma preferido, são alguns casos comuns.
+    EXEMPLO: 
+        const ThemeContext = React.createContext('backgroundColor')
+
+        function App() {
+            return (
+                    <ThemeContext.Provider value="red">
+                        <ThemedButton />
+                    </ThemeContext.Provider>
+            );
+        }
+
+        class ThemedButton extends React.Component{
+            static contextType = ThemeContext
+            render(){
+                return (
+                    <button style={{backgroundColor: `${this.context}`}}>Click here</button>
+                )
+            }
+        }
+
+
+2)  Providers podem ser aninhados para substituir valores mais ao fundo da árvore.
+    EXEMPLO:
+        function App() {
+            return (
+                <ThemeContext.Provider value="red">
+                    <Toolbar />
+
+                    <ThemeContext.Provider value="yellow">
+                        <Toolbar />
+
+                        <ThemeContext.Provider value="green">
+                            <Toolbar />
+                        </ThemeContext.Provider>
+
+                    </ThemeContext.Provider>
+                </ThemeContext.Provider>
+            );
+        }
+
+
+3) Todos consumidores que são descendentes de um Provider serão renderizados novamente sempre que a prop value do Provider for alterada.
+
+
+4)  A propriedade contextType pode ser atribuída a um objeto Contexto (Context) criado por React.createContext().
+    Isso permite você consumir o valor atual mais próximo deste tipo de contexto usando this.context.
+    Você pode referencia-lo em qualquer momento nos métodos de ciclo-de-vida, incluindo a função render.
+    EXEMPLO:
+        class MyClass extends React.Component {
+            componentDidMount() {
+                let value = this.context;
+                /* faz um side-effect na montagem utilizando o valor de MyContext */
+            }
+
+            componentDidUpdate() {
+                let value = this.context;
+                /* ... */
+            }
+
+            componentWillUnmount() {
+                let value = this.context;
+                /* ... */
+            }
+
+            render() {
+                let value = this.context;
+                /* renderiza algo com base no valor de MyContext */
+            }
+        }
+
+        MyClass.contextType = MyContext;

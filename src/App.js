@@ -1,24 +1,25 @@
-import React, { Suspense } from 'react'
+import React from 'react'
 import Clock from './components/Clock'
 import Title from './components/Title'
 
-const OutClickExample = React.lazy(() => import('./components/Accessiblity/OutClickExample'))
 
-function App() {
-  return (
-    <div className="App">
-      <div className="body">
-        <Title subtitle="How are you?">
-          <h1>Welcome to this page!</h1>
-        </Title>
-        <Clock />
+class App extends React.Component {
 
-        <Suspense fallback={<h1>LOADING INFORMATIONS</h1>}>
-          <OutClickExample />
-        </Suspense>
+  render(){  
+    return (
+      <div className="App">
+        <div className="body">
+          <Title subtitle="How are you?">
+            <h1>Welcome to this page!</h1>
+          </Title>
+          
+          <Clock />
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
-//CHECKPOINT: https://pt-br.reactjs.org/docs/context.html
+
+
+//CHECKPOINT: https://pt-br.reactjs.org/docs/context.html#updating-context-from-a-nested-component
 export default App;
