@@ -1,7 +1,7 @@
 1)  Contexto (context) é indicado para compartilhar dados que podem ser considerados “globais” para a árvore de componentes do React.
     Usuário autenticado ou o idioma preferido, são alguns casos comuns.
     EXEMPLO: 
-        const ThemeContext = React.createContext('backgroundColor')
+        const ThemeContext = React.createContext('yellow')
 
         function App() {
             return (
@@ -41,10 +41,19 @@
         }
 
 
-3) Todos consumidores que são descendentes de um Provider serão renderizados novamente sempre que a prop value do Provider for alterada.
+3)  Context.Consumer - Um componente React que assina mudanças de contexto. Este permite você assinar a um contexto por um function component.
+    EXEMPLO:
+        <MyContext.Consumer>
+            {value => /* renderiza algo baseado no valor do context */}
+        </MyContext.Consumer>
+
+    O 'value' é fornecido por <Context.Provider value={VALOR} />
 
 
-4)  A propriedade contextType pode ser atribuída a um objeto Contexto (Context) criado por React.createContext().
+4) Todos consumidores que são descendentes de um Provider serão renderizados novamente sempre que a prop value do Provider for alterada.
+
+
+5)  A propriedade contextType pode ser atribuída a um objeto Contexto (Context) criado por React.createContext().
     Isso permite você consumir o valor atual mais próximo deste tipo de contexto usando this.context.
     Você pode referencia-lo em qualquer momento nos métodos de ciclo-de-vida, incluindo a função render.
     EXEMPLO:
@@ -71,3 +80,37 @@
         }
 
         MyClass.contextType = MyContext;
+
+
+06) Existem alguns casos que podem desencadear renderizações não intencionais em consumidores quando algum componente que antecede um Provider é
+    renderizado. Por exemplo, o código abaixo vai re-renderizar todos consumidores toda vez que o Provider re-renderizar porque um novo objeto é
+    sempre criado para value:
+
+    class App extends React.Component {
+        render() {
+            return (
+                <MyContext.Provider value={{something: 'something'}}>
+                    <Toolbar />
+                </MyContext.Provider>
+            );
+        }
+    }
+
+    Para contornar isso, mova a prop value para o state do nível antecessor.
+    EXEMPLO:
+        class App extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {
+                    value: {something: 'something'},
+                };
+            }
+
+            render() {
+                return (
+                    <Provider value={this.state.value}>
+                        <Toolbar />
+                    </Provider>
+                );
+            }
+        }

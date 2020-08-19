@@ -4,15 +4,15 @@ import Title from './components/Title'
 
 
 class App extends React.Component {
-
-  render(){  
+  
+  render(){
     return (
       <div className="App">
         <div className="body">
           <Title subtitle="How are you?">
             <h1>Welcome to this page!</h1>
           </Title>
-          
+
           <Clock />
         </div>
       </div>
@@ -20,6 +20,5 @@ class App extends React.Component {
   }
 }
 
-
-//CHECKPOINT: https://pt-br.reactjs.org/docs/context.html#updating-context-from-a-nested-component
+//CHECKPOINT: https://pt-br.reactjs.org/docs/error-boundaries.html
 export default App;
