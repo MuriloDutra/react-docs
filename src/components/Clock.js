@@ -9,13 +9,16 @@ class Clock extends React.Component{
         }
     }
 
+
     componentDidMount(){
         this.timerID = setInterval(() => this.tick(), 1000)
     }
 
+
     componentWillUnmount(){
         clearInterval(this.timerID)
     }
+
 
     updateStateUsingProps(){
         this.setState((previousState, props) => {
@@ -24,9 +27,11 @@ class Clock extends React.Component{
         })
     }
 
+
     tick(){
         this.setState({date: new Date()})
     }
+
 
     render(){
         return(

@@ -1,0 +1,105 @@
+1)  Error boundaries são componentes React que capturam erros de JavaScript em qualquer lugar na sua árvore de componentes filhos,
+    registram esses erros e mostram uma UI alternativa em vez da árvore de componentes que quebrou.
+    Error boundaries capturam estes erros durante a renderização, em métodos do ciclo de vida, e em construtores de toda a árvore abaixo delas.
+
+
+2)  Error boundaries não capturam erros em:
+
+    - Manipuladores de evento (saiba mais)
+    - Código assíncrono (ex. callbacks de setTimeout ou requestAnimationFrame)
+    - Renderização no servidor
+    - Erros lançados na própria error boundary (ao invés de em seus filhos)
+
+
+3)  Um componente de classe se torna uma error boundary se ele definir um (ou ambos) dos métodos do ciclo de vida
+    static getDerivedStateFromError() ou componentDidCatch(). Use static getDerivedStateFromError() para renderizar uma UI alternativa
+    após o erro ter sido lançado. Use componentDidCatch() para registrar informações do erro.
+
+
+4)  Não é possível capturar erros de compilação, ErrorBoundaries devem ser utilizados para interceptar erros de run-time.
+
+
+5)  Em ambiente de desenvolvimento o overlay de erro sempre irá aparecer, basta fechá-lo para ver o que o seu <ErrorBoundary /> irá renderizar.
+
+
+6)  Apenas componentes de classe podem ser error boundaries.
+
+
+7)  Uma error boundary não pode capturar um erro em si mesma. Se uma error boundary falhar ao tentar renderizar a mensagem de erro,
+    o erro será propagado para a error boundary mais próxima acima dela.
+
+
+    EXEMPLOS:
+
+    01) Esse dois componentes (BuggyCounter) estão dentro do mesmo error boundary. Se um deles falhar e lançar um erro,
+        o error boundary vai substituir os dois componentes:
+
+            <ErrorBoundary>
+                <BuggyCounter />
+                <BuggyCounter />
+            </ErrorBoundary>
+    
+
+    02) Esses dois componentes (BuggyCounter) cada um tem o próprio error boundary. Então se um falhar e lançar um erro, o outro não será afetado:
+            <div>
+                <ErrorBoundary>
+                    <BuggyCounter />
+                </ErrorBoundary>
+                
+                <ErrorBoundary>
+                    <BuggyCounter />
+                </ErrorBoundary>
+            <div/>
+
+
+8)  Error boundaries não tratam erros dentro de manipuladores de evento. Porém há maneiras de contornar isso:
+    EXEMPLOS:
+        
+        01) class MyComponent extends React.Component {
+                constructor(props) {
+                    super(props);
+                    this.state = { error: null };
+                    this.handleClick = this.handleClick.bind(this);
+                }
+
+                handleClick() {
+                    try {
+                        // Faz alguma coisa que pode quebrar
+                    } catch (error) {
+                        this.setState({ error });
+                    }
+                }
+
+                render() {
+                    if (this.state.error) {
+                        return <h1>Capturei um erro.</h1>
+                    }
+
+                    return <button onClick={this.handleClick}>Clique em mim</button>
+                }
+            }
+
+
+        02) class MyComponent extends React.Component {
+                constructor(props) {
+                    super(props);
+                    this.state = { error: null };
+                    this.handleClick = this.handleClick.bind(this);
+                }
+
+                handleClick() {
+                    try {
+                        // Faz alguma coisa que pode quebrar
+                    } catch (error) {
+                        this.setState({ error });
+                    }
+                }
+
+                render() {
+                    if (this.state.error) {
+                        throw this.state.error //O ErrorBoundary mais próximo irá tratar este erro
+                    }
+                    
+                    return <button onClick={this.handleClick}>Clique em mim</button>
+                }
+            }
