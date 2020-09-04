@@ -1,0 +1,20 @@
+01) Encaminhamento de Ref é uma técnica para passar automaticamente uma ref através de um componente para um dos seus filhos.
+    Isso normalmente não é necessário para a maioria dos componentes na aplicação. Entretanto, pode ser útil para alguns tipos de componentes,
+    especialmente em bibliotecas de componentes reutilizáveis. Os cenários mais comuns estão descritos abaixo.
+    Encaminhamento de ref é um recurso opt-in que permite que alguns componentes tomem uma ref que eles recebam 
+    e a repassem para baixo (em outras palavras, “encaminhem”) para um filho.
+
+        EXEMPLO:
+            const FancyButton = React.forwardRef((props, ref) => (
+                <button ref={ref} className="FancyButton">
+                    {props.children}
+                </button>
+            ));
+
+            // Você agora pode obter a ref diretamente para o button do DOM:
+            const ref = React.createRef();
+            <FancyButton ref={ref}>Click me!</FancyButton>;
+
+
+02) O segundo argumento ref só existe quando você define um componente com a chamada React.forwardRef.
+    Componentes funcionais ou de classe não recebem o argumento ref, e ref também não está disponível nas props.
