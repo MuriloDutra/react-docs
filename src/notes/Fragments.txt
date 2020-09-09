@@ -1,0 +1,73 @@
+01) Um padrão comum no React é que um componente pode retornar múltiplos elementos.
+    Os Fragmentos permitem agrupar uma lista de filhos sem adicionar nós extras ao DOM.
+    
+    EXEMPLO:
+        return (
+            <React.Fragment>
+                <ChildA />
+                <ChildB />
+                <ChildC />
+            </React.Fragment>
+        );
+
+
+02) Um padrão comum é para um componente retornar uma lista de filhos. Considerando o código React a seguir:
+    EXEMPLO:
+        return (
+            <table>
+                <tr>
+                    <Columns />
+                </tr>
+            </table>
+        );
+
+    <Columns /> precisaria retornar múltiplos elementos <td> para que o HTML renderizado fosse válido. Se um div pai for usado dentro do render()
+    de <Columns />, então o HTML resultante será inválido. Seria desta forma:
+        EXEMPLO:
+            <table>
+                <tr>
+                    <div>
+                        <td>Hello</td>
+                        <td>World</td>
+                    </div>
+                </tr>
+            </table>
+
+    Os Fragmentos resolvem este problema:
+        class Columns extends React.Component {
+            render() {
+                return (
+                    <React.Fragment>
+                        <td>Hello</td>
+                        <td>World</td>
+                    </React.Fragment>
+                );
+            }
+        }
+
+    que resulta em uma <Table /> correta:
+
+        <table>
+            <tr>
+                <td>Hello</td>
+                <td>World</td>
+            </tr>
+        </table>
+
+
+03) Fragmentos declarados com <React.Fragment> podem ter chaves. Um caso de uso para isso é mapear uma coleção para um array de fragmentos -
+    por exemplo, para criar uma lista de descrição. Key é o único atributo que pode ser passado para o Fragment,
+    talvez no futuro outros atributos sejam adicionados.
+
+    EXEMPLO:
+        return (
+            <dl>
+                {props.items.map(item => (
+                    // Sem a `key`, React irá disparar um aviso
+                    <React.Fragment key={item.id}>
+                    <dt>{item.term}</dt>
+                    <dd>{item.description}</dd>
+                    </React.Fragment>
+                ))}
+            </dl>
+        );
