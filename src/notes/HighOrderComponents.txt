@@ -1,0 +1,93 @@
+01) Um componente de ordem superior (HOC, do inglês Higher-Order Component) é uma técnica avançada do React para reutilizar a lógica de um componente.
+    HOCs não são parte da API do React, per se. Eles são um padrão que surgiu da própria natureza de composição do React. Concretamente,
+    um componente de ordem superior é uma função que recebe um componente e retorna um novo componente. Enquanto um componente transforma props em UI,
+    um componente de ordem superior transforma um componente em outro componente.
+    
+    EXEMPLO:
+        const EnhancedComponent = higherOrderComponent(WrappedComponent);
+
+
+2)  Não alterar o componente original. Usar composição. Resista à tentação de modificar o prototype de um componente
+    (ou alterá-lo de qualquer outra forma) dentro de um HOC.
+
+        EXEMPLO: //O que não deve ser feito
+            function logProps(InputComponent) {
+                InputComponent.prototype.componentDidUpdate = function(prevProps) {
+                    console.log('Current props: ', this.props);
+                    console.log('Previous props: ', prevProps);
+                };
+                
+                // O fato de estarmos retornando a entrada original é uma dica de que ela sofreu mutação.
+                return InputComponent;
+            }
+
+            // EnhancedComponent criará logs sempre que uma prop for recebida
+            const EnhancedComponent = logProps(InputComponent);
+
+        EXEMPLO: //Maneira correta
+        function logProps(WrappedComponent) {
+            return class extends React.Component {
+                componentDidUpdate(prevProps) {
+                    console.log('Current props: ', this.props);
+                    console.log('Previous props: ', prevProps);
+                }
+ 
+                render() {
+                   // Encapsula o componente de entrada em um container, sem alterá-lo. Excelente!
+                    return <WrappedComponent {...this.props} />;
+                }
+            }
+        }
+
+
+3)  Passar props não relacionadas para o componente encapsulado. HOCs adicionam características a um componente.
+    Eles não devem alterar drasticamente o seu contrato. É esperado que um componente retornado de um HOC tenha uma interface similar ao do
+    componente encapsulado. HOCs devem passar props que não são relacionadas às suas preocupações específicas. A maioria dos HOCs possuem
+    um método render que se parece com algo assim:
+
+    EXEMPLO:
+        render() {
+            // Filtra props extras que são específicas a esse HOC e não devem ser passadas para o componente encapsulado.
+            const { extraProp, ...passThroughProps } = this.props;
+
+            // Injeta props no componente encapsulado. Estes geralmente são valores do state ou métodos da instância.
+            const injectedProp = someStateOrInstanceMethod;
+
+            // Passa as props para o componente encapsulado.
+            return (
+                <WrappedComponent
+                    injectedProp={injectedProp}
+                    {...passThroughProps}
+                />
+            );
+        }
+
+    Essa convenção ajuda a garantir que HOCs são tão flexíveis e reutilizáves quanto possível.
+
+
+4)  A função connect() de react-redux é um HOC:
+        const ConnectedComponent = connect(commentSelector, commentActions)(Component)
+
+    Assim como withRouter de react-router-dom:
+        const NavbarWithRouter = withRouter(Navbar);
+
+
+5)  Convenção: Envolver o nome de exibição para melhor depuração
+    EXEMPLO:
+        function withSubscription(WrappedComponent) {
+            class WithSubscription extends React.Component {/* Do what you gotta do */}
+            WithSubscription.displayName = `WithSubscription(${getDisplayName(WrappedComponent)})`;
+
+            return WithSubscription;
+        }
+
+        function getDisplayName(WrappedComponent) {
+            return WrappedComponent.displayName || WrappedComponent.name || 'Component';
+        }
+
+
+    RESSALVAS
+
+1)  Não usar HOCs dentro do método render
+
+2)  Métodos estáticos devem ser propagados
