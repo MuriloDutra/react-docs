@@ -1,0 +1,50 @@
+01) Você também pode se referir a um componente React usando notação pontuada no próprio JSX.
+    Isso é conveniente se você tem um único módulo que exporta vários componentes React. Por exemplo,
+    se MyComponents.DatePicker é um componente, você pode usá-lo diretamente no JSX como:
+    
+        const MyComponents = {
+            DatePicker: function DatePicker(props) {
+                return <div>Imagine um datepicker {props.color} aqui.</div>;
+            }
+        }
+
+        function BlueDatePicker() {
+            return <MyComponents.DatePicker color="blue" />;
+        }
+
+
+02) Já que JSX compila em chamadas para React.createElement, a biblioteca React também tem sempre que estar no escopo do seu código JSX.
+    
+        import React from 'react';
+
+
+03) Componentes Defindos pelo Usuário Precisam Começar com Letras Maiúsculas. Quando um tipo elemento começar com uma letra minúscula,
+    ele se refere a um componente interno <div> ou <span> e resulta na string 'div' ou 'span' passada para React.createElement.
+    Tipos que começam com letra maiúscula como <Foo /> são compilados para React.createElement(Foo) e correspondem a um componente definido ou
+    importado no seu arquivo JavaScript.
+
+
+04) Você também pode escolher props específicas que seu componente irá consumir enquanto passa todas as outras props usando o operador spread.
+    EXEMPLO:
+        const Button = props => {
+            const { kind, ...other } = props;
+            const className = kind === "primary" ? "PrimaryButton" : "SecondaryButton";
+            return <button className={className} {...other} />;
+        };
+
+        const App = () => {
+            return (
+                <div>
+                    <Button kind="primary" onClick={() => console.log("clicked!")}>
+                        Hello World!
+                    </Button>
+                </div>
+            );
+        };
+
+    No exemplo acima, a prop kind é consumida em segurança e não é passada para o elemento <button> no DOM.
+    Todas as outras props são passadas pelo objeto ...other tornando esse componente bastante flexível.
+    Você pode ver que ele passa as props onClick e children.
+
+    Atributos spread podem ser úteis mas eles facilitam a passagem de props desnecessárias para componentes que não precisam delas
+    ou a passagem de atributos HTML inválidos para o DOM. Nós recomendamos usá-lo com moderação.

@@ -22,5 +22,5 @@ class App extends React.Component {
 }
 
 
-//CHECKPOINT: https://pt-br.reactjs.org/docs/integrating-with-other-libraries.html
+//CHECKPOINT: https://pt-br.reactjs.org/docs/optimizing-performance.html
 export default App;

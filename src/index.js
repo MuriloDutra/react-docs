@@ -4,9 +4,10 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-const rootDiv =  document.getElementById('my-root-div')
+const firstRootDiv =  document.getElementById('first-root-div')
 
-const renderRootCode = () => {
+
+const renderRootUI = () => {
   return( 
     <React.StrictMode>
         <App />
@@ -14,7 +15,8 @@ const renderRootCode = () => {
   )
 }
 
-ReactDOM.render(renderRootCode(), rootDiv)
+ReactDOM.render(renderRootUI(), firstRootDiv)
+
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
