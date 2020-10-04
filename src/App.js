@@ -11,6 +11,7 @@ class App extends React.Component {
     this.onRanderCallback = this.onRanderCallback.bind(this)
   }
 
+
   onRanderCallback(id, phase, actualDuration, baseDuration, startTime, commitTime, interactions){
     /*console.log('id: ', id)//id - o prop "id" da árvore Profiler que acabou de atualizar 
     console.log('phase: ', phase)//phase - "mount" (se a árvore acabou de ser montada) ou "update" (se foi renderizada novamente)
@@ -20,6 +21,7 @@ class App extends React.Component {
     console.log('commitTime: ', commitTime)//commitTime - quando o React enviou essa atualização
     console.log('interactions: ', interactions)//interactions - um Set de interações pertencentes â essa atualização*/
   }
+
 
   render(){
     const buttonRef = createRef()
@@ -39,5 +41,5 @@ class App extends React.Component {
 }
 
 
-//CHECKPOINT: https://pt-br.reactjs.org/docs/react-without-jsx.html
+//CHECKPOINT: https://pt-br.reactjs.org/docs/refs-and-the-dom.html
 export default App
