@@ -1,0 +1,12 @@
+1)  O termo “render prop” se refere a uma técnica de compartilhar código entre componentes React passando uma prop cujo valor é uma função.
+    Um componente com uma render prop recebe uma função que retorna um elemento React e a invoca no momento de renderização,
+    não sendo necessário para o componente implementar uma lógica própria. Um exemplo de componente que utiliza o conceito render prop é <FlalList />
+    do react-native.
+        EXEMPLO:
+            <FlatList
+                data={users}
+                renderItem={renderItem} //Render prop
+                keyExtractor={item => item.id}
+            />
+
+    Portanto, uma render prop é uma função passada nas props que um componente utiliza para determinar o que renderizar.

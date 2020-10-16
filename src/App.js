@@ -4,6 +4,7 @@ import Title from './components/Title'
 import ErrorBoundary from './components/ErrorBoundaries/ErrorBoundary';
 import FancyButton from './components/REFs/FancyButton';
 import AutoFocusTextInput from './components/REFs/AutoFocusTextInput';
+import MouseTracker from './components/RenderProp/MouseTracker';
 
 
 class App extends React.Component {
@@ -36,6 +37,7 @@ class App extends React.Component {
           <Clock />
           <FancyButton ref={buttonRef} label="Click here!" />
           <AutoFocusTextInput />
+          <MouseTracker />
         </ErrorBoundary>
       </Profiler>
     );
@@ -43,5 +45,5 @@ class App extends React.Component {
 }
 
 
-//CHECKPOINT: https://pt-br.reactjs.org/docs/refs-and-the-dom.html
+//CHECKPOINT: https://pt-br.reactjs.org/docs/static-type-checking.html
 export default App
