@@ -3,6 +3,7 @@ import Clock from './components/Clock'
 import Title from './components/Title'
 import ErrorBoundary from './components/ErrorBoundaries/ErrorBoundary';
 import FancyButton from './components/REFs/FancyButton';
+import AutoFocusTextInput from './components/REFs/AutoFocusTextInput';
 
 
 class App extends React.Component {
@@ -34,6 +35,7 @@ class App extends React.Component {
           </Title>
           <Clock />
           <FancyButton ref={buttonRef} label="Click here!" />
+          <AutoFocusTextInput />
         </ErrorBoundary>
       </Profiler>
     );

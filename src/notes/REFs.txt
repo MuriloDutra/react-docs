@@ -18,3 +18,6 @@
 
 02) O segundo argumento ref só existe quando você define um componente com a chamada React.forwardRef.
     Componentes funcionais ou de classe não recebem o argumento ref, e ref também não está disponível nas props.
+
+
+03) Você não pode usar o atributo ref em um componente funcional, já que eles não possuem instâncias.
