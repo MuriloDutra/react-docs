@@ -1,10 +1,8 @@
-import React, { createRef, Profiler } from 'react'
+import React, { createRef, Profiler, StrictMode } from 'react'
 import Clock from './components/Clock'
 import Title from './components/Title'
 import ErrorBoundary from './components/ErrorBoundaries/ErrorBoundary';
 import FancyButton from './components/REFs/FancyButton';
-import AutoFocusTextInput from './components/REFs/AutoFocusTextInput';
-import MouseTracker from './components/RenderProp/MouseTracker';
 
 
 class App extends React.Component {
@@ -29,21 +27,21 @@ class App extends React.Component {
     const buttonRef = createRef()
 
     return (
-      <Profiler id='mainProfiler' onRender={this.onRanderCallback}>
-        <ErrorBoundary>
-          <Title subtitle="How are you?">
-            <h1>Welcome to this page!</h1>
-          </Title>
-          <Clock />
-          <FancyButton ref={buttonRef} label="Click here!" />
-          <AutoFocusTextInput />
-          <MouseTracker />
-        </ErrorBoundary>
-      </Profiler>
+      <StrictMode>
+        <Profiler id='mainProfiler' onRender={this.onRanderCallback}>
+          <ErrorBoundary>
+            <Title subtitle="How are you?">
+              <h1>Welcome to this page!</h1>
+            </Title>
+            <Clock />
+            <FancyButton ref={buttonRef} label="Click here!" />
+          </ErrorBoundary>
+        </Profiler>
+      </StrictMode>
     );
   }
 }
 
 
-//CHECKPOINT: https://pt-br.reactjs.org/docs/static-type-checking.html
+//CHECKPOINT: https://pt-br.reactjs.org/docs/typechecking-with-proptypes.html
 export default App
