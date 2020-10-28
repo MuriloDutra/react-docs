@@ -3,6 +3,7 @@ import Clock from './components/Clock'
 import Title from './components/Title'
 import ErrorBoundary from './components/ErrorBoundaries/ErrorBoundary';
 import FancyButton from './components/REFs/FancyButton';
+import NameForm from './components/UncontrolledComponents/NameForm';
 
 
 class App extends React.Component {
@@ -35,6 +36,7 @@ class App extends React.Component {
             </Title>
             <Clock />
             <FancyButton ref={buttonRef} label="Click here!" />
+            <NameForm />
           </ErrorBoundary>
         </Profiler>
       </StrictMode>
@@ -43,5 +45,5 @@ class App extends React.Component {
 }
 
 
-//CHECKPOINT: https://pt-br.reactjs.org/docs/typechecking-with-proptypes.html
+//CHECKPOINT: https://pt-br.reactjs.org/docs/web-components.html
 export default App

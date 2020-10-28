@@ -16,7 +16,7 @@ class Title extends React.Component{
 
 
 Title.defaultProps = {
-    subtitle: 'You have to provide "subtitle" property to <Title />'
+    subtitle: 'You can provide "subtitle" property to <Title />'
 }
 
 
