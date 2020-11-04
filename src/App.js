@@ -47,5 +47,5 @@ class App extends React.Component {
 }
 
 
-//CHECKPOINT: https://pt-br.reactjs.org/docs/web-components.html
+//CHECKPOINT: https://pt-br.reactjs.org/docs/hooks-overview.html
 export default App
