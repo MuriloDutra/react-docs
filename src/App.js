@@ -4,7 +4,7 @@ import Title from './components/Title'
 import ErrorBoundary from './components/ErrorBoundaries/ErrorBoundary';
 import FancyButton from './components/REFs/FancyButton';
 import NameForm from './components/UncontrolledComponents/NameForm';
-import FirstExample from './components/ReactHooks/FirstExample';
+import Example from './components/ReactHooks/UseEffect/Example';
 
 
 class App extends React.Component {
@@ -38,7 +38,7 @@ class App extends React.Component {
             <Clock />
             <FancyButton ref={buttonRef} label="Click here!" />
             <NameForm />
-            <FirstExample />
+            <Example />
           </ErrorBoundary>
         </Profiler>
       </StrictMode>
@@ -47,5 +47,5 @@ class App extends React.Component {
 }
 
 
-//CHECKPOINT: https://pt-br.reactjs.org/docs/hooks-overview.html
+//CHECKPOINT: https://pt-br.reactjs.org/docs/hooks-effect.html
 export default App
