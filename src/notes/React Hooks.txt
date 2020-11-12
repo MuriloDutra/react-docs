@@ -10,3 +10,6 @@
 3)  useState()
     - useState retorna um par: o valor do state atual e uma função que permite atualizá-lo.
     - É parecido com this.setState em uma classe, exceto que não mescla o antigo state com o novo.
+
+
+4)  Em relação ao useEffect(): React irá aplicar todos os efeitos usados por um componente, na ordem em que eles foram especificados.
