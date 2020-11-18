@@ -11,5 +11,22 @@
     - useState retorna um par: o valor do state atual e uma função que permite atualizá-lo.
     - É parecido com this.setState em uma classe, exceto que não mescla o antigo state com o novo.
 
+    EXEMPLO DE USO:
+        const [count, setCount] = useState(initialCount);
+
+        a) setCount(newValue)
+        b) setCount(prevCount => prevCount - 1)
+
+    ----\\----
+
+    - Estado Inicial Preguiçoso
+
+    O argumento initialState é o estado usado durante a primeira renderização. Nas próximas renderizações, ele é desconsiderado. Se o estado inicial é o resultado desse demorado processamento, você pode fornecer uma função, no qual será executada apenas na primeira renderização:
+
+    const [state, setState] = useState(() => {
+        const initialState = someExpensiveComputation(props);
+        return initialState;
+    });
+
 
 4)  Em relação ao useEffect(): React irá aplicar todos os efeitos usados por um componente, na ordem em que eles foram especificados.
