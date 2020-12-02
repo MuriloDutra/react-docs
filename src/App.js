@@ -4,7 +4,7 @@ import Title from './components/Title'
 import ErrorBoundary from './components/ErrorBoundaries/ErrorBoundary';
 import FancyButton from './components/REFs/FancyButton';
 import NameForm from './components/UncontrolledComponents/NameForm';
-import Example from './components/ReactHooks/UseEffect/Example';
+import Counter from './components/ReactHooks/UseEffect/Counter.react';
 
 
 class App extends React.Component {
@@ -38,7 +38,16 @@ class App extends React.Component {
             <Clock />
             <FancyButton ref={buttonRef} label="Click here!" />
             <NameForm />
-            <Example />
+            <Counter />
+            
+            {/*bubbles test*/}
+            <div onClick={() => console.log("1")} style={{backgroundColor: 'red', width: 100}}>1 
+              <div onClick={() => console.log("2")} style={{backgroundColor: 'yellow', width: 75}}>2
+                <div onClick={() => console.log("3")} style={{backgroundColor: 'green', width: 50}}>3
+                </div>
+              </div>
+            </div>
+
           </ErrorBoundary>
         </Profiler>
       </StrictMode>
@@ -47,5 +56,5 @@ class App extends React.Component {
 }
 
 
-//CHECKPOINT: https://pt-br.reactjs.org/docs/test-utils.html#act
+//CHECKPOINT: https://pt-br.reactjs.org/docs/testing-recipes.html#data-fetching
 export default App
