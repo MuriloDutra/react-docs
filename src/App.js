@@ -47,7 +47,6 @@ class App extends React.Component {
                 </div>
               </div>
             </div>
-
           </ErrorBoundary>
         </Profiler>
       </StrictMode>
@@ -56,5 +55,5 @@ class App extends React.Component {
 }
 
 
-//CHECKPOINT: https://pt-br.reactjs.org/docs/testing-recipes.html#data-fetching
+//CHECKPOINT: https://pt-br.reactjs.org/docs/testing-recipes.html#mocking-modules
 export default App
