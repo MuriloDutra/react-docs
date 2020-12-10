@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, unmountComponentAtNode } from 'react-dom'
 import { act } from 'react-dom/test-utils'
-import User from './Components/User'
+import User from './Components/User.react'
 
 let container;
 beforeEach(() => {
